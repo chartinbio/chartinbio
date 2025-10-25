@@ -1,0 +1,23 @@
+
+const shareButton = document.querySelector('.share-button');
+const shareOptions = document.querySelector('.share-options');
+shareButton.addEventListener('click', () => {
+  shareOptions.style.display = shareOptions.style.display === 'flex' ? 'none' : 'flex';
+});
+
+
+const copyBtn = document.querySelector('.copy-contract-btn');
+copyBtn.addEventListener('click', () => {
+  const contractAddress = document.querySelector('.token-contract-address').textContent;
+  navigator.clipboard.writeText(contractAddress);
+  copyBtn.classList.add('copied');
+  setTimeout(() => copyBtn.classList.remove('copied'), 1500);
+});
+
+
+const modalOverlay = document.querySelector('.modal-overlay');
+const verifiedBadge = document.querySelector('.verified-badge');
+const closeModal = document.querySelector('.close-modal');
+
+verifiedBadge.addEventListener('click', () => modalOverlay.classList.add('active'));
+closeModal.addEventListener('click', () => modalOverlay.classList.remove('active'));
